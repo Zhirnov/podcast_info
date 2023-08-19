@@ -189,8 +189,8 @@ def get_guest_info(guest_name, guest_info):
 )
 def process_podcast(url, path):
     output = {}
-    podcast_details = get_transcribe_podcast.call(url, path)
-    podcast_info = get_podcast_info.call(
+    podcast_details = get_transcribe_podcast.remote(url, path)
+    podcast_info = get_podcast_info.remote(
         podcast_details["episode_transcript"], podcast_details["host_name"]
     )
     output["podcast_details"] = podcast_details
@@ -198,7 +198,7 @@ def process_podcast(url, path):
 
     if podcast_info["guest_name"] != "":
         output["podcast_guest"] = podcast_info["guest_name"]
-        output["podcast_guest_info"] = get_guest_info.call(
+        output["podcast_guest_info"] = get_guest_info.remote(
             podcast_info["guest_name"], podcast_info["guest_info"]
         )
     else:
@@ -217,11 +217,11 @@ def process_podcast(url, path):
 @stub.local_entrypoint()
 def test_method(url, path):
     output = {}
-    podcast_details = get_transcribe_podcast.call(url, path)
-    podcast_info = get_podcast_info.call(
+    podcast_details = get_transcribe_podcast.remote(url, path)
+    podcast_info = get_podcast_info.remote(
         podcast_details["episode_transcript"], podcast_details["host_name"]
     )
-    guest_info = get_guest_info.call(
+    guest_info = get_guest_info.remote(
         podcast_info["guest_name"], podcast_info["guest_info"]
     )
 
