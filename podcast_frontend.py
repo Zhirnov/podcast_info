@@ -75,11 +75,9 @@ def main():
     )
 
     if process_button:
+        st.empty()
         # Call the function to process the URLs and retrieve podcast guest information
         podcast_info = process_podcast_info(url)
-
-        # Right section - Newsletter content
-        st.header("Newsletter Content")
 
         # Display the podcast title
         st.subheader("Episode Title")
