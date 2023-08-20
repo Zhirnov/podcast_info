@@ -6,8 +6,8 @@ from io import BytesIO
 
 
 def main():
-    st.title("Personal Podcast Newsletter")
-
+    st.title("Personal Podcast Overview 📻")
+    st.divider()
     available_podcast_info = create_dict_from_json_files(".")
 
     # Left section - Input fields
@@ -23,17 +23,17 @@ def main():
     if selected_podcast != "Process new episode":
         podcast_info = available_podcast_info[selected_podcast]
 
-        # Display the podcast title
-        st.subheader("Episode Title")
-        st.write(podcast_info["podcast_details"]["episode_title"])
-
         # Display the podcast summary and the cover image in a side-by-side layout
-        col1, col2 = st.columns([7, 3])
+        col1, col2 = st.columns([8, 3])
 
         with col1:
-            # Display the podcast episode summary
-            st.subheader("Podcast Episode Summary")
-            st.write(podcast_info["podcast_summary"])
+            # Display the podcast title
+            episode_title = podcast_info["podcast_details"]["episode_title"]
+            st.subheader(f":red[Latest Episode] 🌱 \n **{episode_title}**")
+
+            guest = podcast_info["podcast_guest"]
+            st.subheader(f":red[Guest] : _{guest}_")
+            podcast_info["podcast_guest_info"]
 
         with col2:
             st.image(
@@ -42,25 +42,23 @@ def main():
                 width=300,
                 use_column_width=True,
             )
+        # Display the podcast episode summary
+        st.subheader(":red[Summary] 📬")
+        st.write(podcast_info["podcast_summary"])
+        st.divider()
 
-        # Display the podcast guest and their details in a side-by-side layout
-        col3, col4 = st.columns([3, 7])
+        with st.expander("📍 :blue[**More from this episode**]"):
+            # Display the key moments
+            """"""
+            st.markdown("💫 :blue[**Highlights**]")
+            podcast_info["podcast_highlights"]
+            ""
+            st.markdown("📝 :blue[**Insides**]")
+            podcast_info["podcast_insights"]
+            ""
+            st.markdown("🤗 **:blue[Recommendations]**")
+            podcast_info["podcast_actionable_recommendations"]
 
-        with col3:
-            st.subheader("Podcast Guest")
-            st.write(podcast_info["podcast_guest"])
-
-        with col4:
-            st.subheader("Podcast Guest Details")
-            st.write(podcast_info["podcast_guest"])
-
-        # Display the five key moments
-        st.subheader("Highlights and Insides")
-        key_moments = podcast_info["podcast_highlights"]
-        for moment in key_moments.split("\n"):
-            st.markdown(
-                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True
-            )
     else:
         # User Input box
         st.sidebar.subheader("Add and Process New Podcast Feed")
