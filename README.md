@@ -70,13 +70,13 @@ Before setting up and running the application, ensure you have the following:
    - Select an existing podcast to view its latest episode information and analysis.
    - Process a new episode by entering the RSS feed URL and clicking the "Process Podcast Feed" button.
 
-<img src="https://github.com/Zhirnov/podcast_info/assets/35246537/06aa29fe-dcea-4dc4-b517-3a6424aabca7" width="500">
+<img src="https://github.com/Zhirnov/podcast_info/assets/35246537/06aa29fe-dcea-4dc4-b517-3a6424aabca7" width="700">
 
 2. View episode information and analysis:
    - For existing podcasts, the dashboard displays episode details, guest information, summary, highlights, insights, and recommendations.
    - For new episodes, the application processes the episode and presents the information as mentioned above.
 
-<img src="https://github.com/Zhirnov/podcast_info/assets/35246537/9ed8d3e5-a360-4d76-a8cb-ff249070c707" width="500"> <img src="https://github.com/Zhirnov/podcast_info/assets/35246537/3c384fdb-6d48-41d2-bbda-2cb0b0d8d96b" width="500">
+<img src="https://github.com/Zhirnov/podcast_info/assets/35246537/9ed8d3e5-a360-4d76-a8cb-ff249070c707" width="700"> <img src="https://github.com/Zhirnov/podcast_info/assets/35246537/3c384fdb-6d48-41d2-bbda-2cb0b0d8d96b" width="700">
 
 ## Deployment
 
